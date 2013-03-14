@@ -13,9 +13,13 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 	<bean id="genericDao" abstract="true" class="com.fairyhawk.common.dao.GenericDaoImpl">
         <property name="myBatisDao" ref="myBatisDao"/>
     </bean>
+    
     <!-- 
     <bean id="genericCrmDao" abstract="true" class="com.fairyhawk.common.dao.GenericCrmDaoImpl">
         <property name="myBatisDao" ref="crmMyBatisDao"/>
     </bean>
      -->
+     
+    
+    
 </beans>

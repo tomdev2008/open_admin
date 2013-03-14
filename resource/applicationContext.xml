@@ -344,12 +344,12 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 	
 	
     <!-- 加载其他文件 -->
-    <import resource="classpath:/config/spring/spring-common.xml"/>
+    <import resource="classpath*:/config/spring/spring-common.xml"/>
     
-   	<import resource="classpath:/config/spring/spring-customer.xml"/>
-    <import resource="classpath:/config/spring/spring-user.xml"/>
+   	<import resource="classpath*:/config/spring/spring-customer.xml"/>
+    <import resource="classpath*:/config/spring/spring-user.xml"/>
     
-    <import resource="classpath:/config/spring/spring-customerApply.xml"/>
+    <import resource="classpath*:/config/spring/spring-customerApply.xml"/>
     
-    
+     <import resource="classpath*:/config/spring/spring_activemq.xml"/>
 	</beans>

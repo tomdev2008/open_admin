@@ -4,14 +4,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.fairyhawk.common.action.CommonAction;
 import com.fairyhawk.common.entity.JsonEntity;
 import com.fairyhawk.entity.customer.Customer;
 import com.fairyhawk.entity.customer.CustomerQueryCondition;
 import com.fairyhawk.service.customer.ICustomerService;
+import com.fairyhawk.service.mq.NotifyMessageProducer;
+import com.fairyhawk.test.Threads;
 /**
  * 
  * @ClassName  CustomerAction
@@ -26,8 +28,8 @@ public class CustomerAction extends CommonAction {
      * serialVersionUID
      */
     private static final long serialVersionUID = -5437567400651524629L;
-    private static final Log logger = LogFactory.getLog(CustomerAction.class);
-    
+    private NotifyMessageProducer notifyMessageProducer;
+	private static Logger logger = LoggerFactory.getLogger(CustomerAction.class);
     private ICustomerService customerService;
     private List<Customer> customerLists;
     CustomerQueryCondition queryCondition;
@@ -258,6 +260,33 @@ public class CustomerAction extends CommonAction {
         }
         return "testpage";
     }
+    
+    
+    public String testActiveMQ(){
+
+		logger.info("+++ test send message start +++ ");
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("userName", "liuqinggang");
+		map.put("email", "7305@qq.com");
+	
+		
+		
+		notifyMessageProducer.sendQueue(map);
+		logger.info("+++ send message ok +++ ");
+		Threads.sleep(1000);
+		logger.info("+++ test message ok:{} +++ ");
+		
+	
+    	 return "testpage";
+    }
+    public NotifyMessageProducer getNotifyMessageProducer() {
+		return notifyMessageProducer;
+	}
+	public void setNotifyMessageProducer(NotifyMessageProducer notifyMessageProducer) {
+		this.notifyMessageProducer = notifyMessageProducer;
+	}
+
+	
     public void sendValidateMessage(String message)  {
         try {
             this.getServletResponse().setCharacterEncoding("utf-8");
