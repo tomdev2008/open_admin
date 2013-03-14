@@ -19,11 +19,11 @@ public class NotifyMessageListener implements MessageListener{
 	public void onMessage(Message message) {
 		try {
 			
-			logger.info("++++ 接手消息 ");
 			MapMessage mapMessage = (MapMessage) message;
 			//打印消息详情
-			logger.info("UserName:{}, Email:{}", mapMessage.getString("userName"), mapMessage.getString("email"));
-
+			logger.info("+++ 接收消息: UserName:{}, Email:{} ", mapMessage.getString("userName"),mapMessage.getString("email"));
+			logger.info(" +++ 接收消息: ObjectType:{} ", mapMessage.getStringProperty("objectType"));
+			
 		} catch (Exception e) {
 			logger.error("处理消息时发生异常.", e);
 		}

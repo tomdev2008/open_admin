@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.util.*" %>
-<%@ page import="com.shangde.edu.sys.domain.*" %>
 <%@ include file="/WEB-INF/inc/header.inc" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
@@ -132,8 +131,7 @@
 	</head>
 	<body onload="removeStr()">
 		<div id="rightframe">
-			<s:form action="user!addUserSubmit" method="post"
-				onsubmit="return checkSubmit();">
+			<form action="user!addUserSubmit" method="post"	onsubmit="return checkSubmit();">
 				<table class="com_table com_table1" border="0" cellpadding="0"
 					cellspacing="1" style="width: 600px; height: 200px;">
 					<tr>
@@ -306,7 +304,7 @@
 						</td>
 					</tr>
 				</table>
-			</s:form> 
+			</form> 
 		</div>
 	</body>
 </html>

@@ -4,13 +4,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.jms.Destination;
+import javax.jms.JMSException;
+import javax.jms.MapMessage;
+import javax.jms.Message;
+import javax.jms.Session;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
 
 import com.fairyhawk.common.action.CommonAction;
 import com.fairyhawk.common.entity.JsonEntity;
 import com.fairyhawk.entity.customer.Customer;
 import com.fairyhawk.entity.customer.CustomerQueryCondition;
+import com.fairyhawk.entity.user.User;
 import com.fairyhawk.service.customer.ICustomerService;
 import com.fairyhawk.service.mq.NotifyMessageProducer;
 import com.fairyhawk.test.Threads;
@@ -28,14 +37,16 @@ public class CustomerAction extends CommonAction {
      * serialVersionUID
      */
     private static final long serialVersionUID = -5437567400651524629L;
-    private NotifyMessageProducer notifyMessageProducer;
+  
 	private static Logger logger = LoggerFactory.getLogger(CustomerAction.class);
     private ICustomerService customerService;
     private List<Customer> customerLists;
-    CustomerQueryCondition queryCondition;
-    Customer customer;
+    private CustomerQueryCondition queryCondition;
+    private Customer customer;
     
-    
+    private NotifyMessageProducer advancedNotifyMessageProducer;
+ 
+  	
     /**
      *  ①单条增加 返回主键
                     ② 批量增加 返回响应行数
@@ -261,7 +272,6 @@ public class CustomerAction extends CommonAction {
         return "testpage";
     }
     
-    
     public String testActiveMQ(){
 
 		logger.info("+++ test send message start +++ ");
@@ -269,9 +279,7 @@ public class CustomerAction extends CommonAction {
 		map.put("userName", "liuqinggang");
 		map.put("email", "7305@qq.com");
 	
-		
-		
-		notifyMessageProducer.sendQueue(map);
+		advancedNotifyMessageProducer.sendQueue(map);
 		logger.info("+++ send message ok +++ ");
 		Threads.sleep(1000);
 		logger.info("+++ test message ok:{} +++ ");
@@ -279,15 +287,8 @@ public class CustomerAction extends CommonAction {
 	
     	 return "testpage";
     }
-    public NotifyMessageProducer getNotifyMessageProducer() {
-		return notifyMessageProducer;
-	}
-	public void setNotifyMessageProducer(NotifyMessageProducer notifyMessageProducer) {
-		this.notifyMessageProducer = notifyMessageProducer;
-	}
 
-	
-    public void sendValidateMessage(String message)  {
+	public void sendValidateMessage(String message)  {
         try {
             this.getServletResponse().setCharacterEncoding("utf-8");
             this.getServletResponse().getWriter().write(message);
@@ -295,6 +296,16 @@ public class CustomerAction extends CommonAction {
         }
     }
     
+	
+    public NotifyMessageProducer getAdvancedNotifyMessageProducer() {
+		return advancedNotifyMessageProducer;
+	}
+
+	public void setAdvancedNotifyMessageProducer(
+			NotifyMessageProducer advancedNotifyMessageProducer) {
+		this.advancedNotifyMessageProducer = advancedNotifyMessageProducer;
+	}
+
     public ICustomerService getCustomerService() {
         return customerService;
     }

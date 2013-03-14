@@ -49,19 +49,19 @@
 	</typeAliases>
 
 	<mappers>
-		<mapper resource="/config/mybatis/publicMapper.xml" />
+		<mapper resource="config/mybatis/publicMapper.xml" />
 		
-		<mapper resource="/config/mybatis/customer/CustomerMapper.xml" />
-		<mapper resource="/config/mybatis/customer/CustomerApplyMapper.xml" />
+		<mapper resource="config/mybatis/customer/CustomerMapper.xml" />
+		<mapper resource="config/mybatis/customer/CustomerApplyMapper.xml" />
 		
 		<!-- user相关 -->
-		<mapper resource="/config/mybatis/user/UserMapper.xml" />
-		<mapper resource="/config/mybatis/user/RoleMapper.xml" />
-		<mapper resource="/config/mybatis/user/FunctionMapper.xml" />
-		<mapper resource="/config/mybatis/user/RoleFunctionMapper.xml" />
-		<mapper resource="/config/mybatis/user/GroupMapper.xml" />
-		<mapper resource="/config/mybatis/user/UserRoleMapper.xml" />
-		<mapper resource="/config/mybatis/user/LoginLogMapper.xml" />
+		<mapper resource="config/mybatis/user/UserMapper.xml" />
+		<mapper resource="config/mybatis/user/RoleMapper.xml" />
+		<mapper resource="config/mybatis/user/FunctionMapper.xml" />
+		<mapper resource="config/mybatis/user/RoleFunctionMapper.xml" />
+		<mapper resource="config/mybatis/user/GroupMapper.xml" />
+		<mapper resource="config/mybatis/user/UserRoleMapper.xml" />
+		<mapper resource="config/mybatis/user/LoginLogMapper.xml" />
 		
 		
 	</mappers>
