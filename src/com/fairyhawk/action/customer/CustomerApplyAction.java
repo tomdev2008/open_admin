@@ -3,13 +3,12 @@ package com.fairyhawk.action.customer;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.fairyhawk.common.action.CommonAction;
 import com.fairyhawk.entity.customer.CustomerApply;
 import com.fairyhawk.service.customer.CustomerApplyService;
-import com.fairyhawk.util.StringUtils;
 
 /**
  * @ClassName  CustomerApplyAction
@@ -21,7 +20,7 @@ import com.fairyhawk.util.StringUtils;
  */
 public class CustomerApplyAction extends CommonAction{
 
-    private static final Log logger = LogFactory.getLog(CustomerApplyAction.class);
+    private static Logger logger = LoggerFactory.getLogger(CustomerApplyAction.class);
     private CustomerApply user;
     
     private CustomerApplyService customerApplyService;

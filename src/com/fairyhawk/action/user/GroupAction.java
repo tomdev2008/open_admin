@@ -3,7 +3,8 @@ package com.fairyhawk.action.user;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.fairyhawk.common.action.CommonAction;
 import com.fairyhawk.entity.user.Group;
@@ -26,7 +27,7 @@ public class GroupAction extends CommonAction {
      */
     private static final long serialVersionUID = 4972883193722743009L;
 
-    private static final Logger logger = Logger.getLogger(GroupAction.class);
+    private static Logger logger = LoggerFactory.getLogger(GroupAction.class);
 
     private int groupId;
     private Group group;

@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.fairyhawk.common.action.CommonAction;
 import com.fairyhawk.common.entity.JsonEntity;
@@ -28,8 +29,7 @@ public class FunctionAction extends CommonAction {
      */
     private static final long serialVersionUID = 1251015098824187276L;
 
-    private static final Logger logger = Logger.getLogger(FunctionAction.class);
-    
+    private static Logger logger = LoggerFactory.getLogger(FunctionAction.class);
   
     private FunctionService functionService;
     private List<Function> functionList = new ArrayList<Function>();

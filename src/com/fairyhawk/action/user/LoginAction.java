@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.fairyhawk.common.action.CommonAction;
 import com.fairyhawk.common.util.Constant;
@@ -32,7 +33,7 @@ import com.opensymphony.xwork2.ActionContext;
  */
 public class LoginAction extends CommonAction {
 
-    private static final Logger logger = Logger.getLogger(LoginAction.class);
+    private static Logger logger = LoggerFactory.getLogger(LoginAction.class);
     /**
 	 * 
 	 */
