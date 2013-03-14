@@ -13,13 +13,43 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 	<bean id="genericDao" abstract="true" class="com.fairyhawk.common.dao.GenericDaoImpl">
         <property name="myBatisDao" ref="myBatisDao"/>
     </bean>
-    
-    <!-- 
-    <bean id="genericCrmDao" abstract="true" class="com.fairyhawk.common.dao.GenericCrmDaoImpl">
-        <property name="myBatisDao" ref="crmMyBatisDao"/>
-    </bean>
-     -->
-     
+	
+	<!--  配置hessian客户端 -->
+	
+	<bean id="fairyHessianGateWay"
+		class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceInterface"
+			value="com.fairyhawk.service.hessian.FairyhawkHessianServiceSupport">
+		</property>
+		<property name="serviceUrl">
+			<value>http://127.0.0.1/opens_admin/hessian/fairyhawkHessianServiceGateWay
+			</value>
+		</property>
+		<property name="readTimeout">
+			<value>100000</value>
+		</property>
+		<property name="proxyFactory">
+			<bean class="com.fairyhawk.service.hessian.HessianClientProxyFactory" />
+		</property>
+	</bean>
+	
+     <!-- 邮件发送线程类-->
+	<bean name="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.163.com" />
+		<property name="defaultEncoding" value="UTF-8"></property>
+		<property name="username" value="testopenmail@163.com"></property>
+		<property name="password" value="1q2w3e"></property>
+		<property name="javaMailProperties">
+			<map>
+				<entry key="mail.smtp.auth" value="true" />
+			</map>
+		</property>
+	</bean>
+	<!-- 邮件发送服务类-->
+	<bean id="emailService" class="com.fairyhawk.common.service.EmailServiceImpl">
+		<property name="javaMailSender" ref="javaMailSender"></property>
+	</bean>
+	
     
     
 </beans>

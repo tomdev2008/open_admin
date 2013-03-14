@@ -330,36 +330,6 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean>
 	
-	<!--  crm库的dao -->
-	<!--
-	 <bean id="crmSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-    	 <property name="configLocation"  value="classpath:SqlMapConfig.xml"/>
-		<property name="dataSource" ref="dataSourceCrmOnlineRead" />
-	</bean>
-	
-	<bean id="crmMyBatisDao" class="com.fairyhawk.common.dao.MyBatisDaoImpl">
-		<property name="sqlSessionFactory" ref="crmSqlSessionFactory"></property>
-	</bean>
-	-->
-	<!--  配置hessian客户端 -->
-	
-	<bean id="fairyHessianGateWay"
-		class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
-		<property name="serviceInterface"
-			value="com.fairyhawk.service.hessian.FairyhawkHessianServiceSupport">
-		</property>
-		<property name="serviceUrl">
-			<value>http://127.0.0.1/opens_admin/hessian/fairyhawkHessianServiceGateWay
-			</value>
-		</property>
-		<property name="readTimeout">
-			<value>100000</value>
-		</property>
-		<property name="proxyFactory">
-			<bean class="com.fairyhawk.service.hessian.HessianClientProxyFactory" />
-		</property>
-	</bean>
-	
 	
     <!-- 加载其他文件 -->
     <import resource="classpath*:/config/spring/spring-common.xml"/>
